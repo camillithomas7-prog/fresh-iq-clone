@@ -1,6 +1,7 @@
 import { Sparkles, Truck, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Translation } from '../i18n';
+import { buyNow } from '../lib/shopify';
 
 export default function FinalCTA({ t }: { t: Translation }) {
   return (
@@ -37,6 +38,7 @@ export default function FinalCTA({ t }: { t: Translation }) {
           <span className="bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">{t.hero.discount}</span>
         </motion.div>
         <motion.button
+          onClick={() => buyNow()}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}

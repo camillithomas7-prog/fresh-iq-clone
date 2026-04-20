@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Lang, Translation } from '../i18n';
+import { buyNow } from '../lib/shopify';
 
 type Props = { t: Translation; lang: Lang; setLang: (l: Lang) => void };
 
@@ -46,7 +47,10 @@ export default function Navbar({ t, lang, setLang }: Props) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <button className="h-9 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-5 shadow-lg shadow-primary/20 text-sm transition-colors">
+            <button
+              onClick={() => buyNow()}
+              className="h-9 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-5 shadow-lg shadow-primary/20 text-sm transition-colors"
+            >
               {t.nav.buyNow}
             </button>
           </motion.div>

@@ -6,8 +6,11 @@ import productMint from '../assets/product-mint.png';
 import productPink from '../assets/product-pink.png';
 import productOrange from '../assets/product-orange.png';
 import { useEffect, useState } from 'react';
+import { buyNow, type VariantKey } from '../lib/shopify';
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
+const VARIANT_KEYS: VariantKey[] = ['blue', 'mint', 'pink', 'orange'];
 
 export default function Hero({ t }: { t: Translation }) {
   const [tickerIdx, setTickerIdx] = useState(0);
@@ -159,7 +162,9 @@ export default function Hero({ t }: { t: Translation }) {
                 whileTap={{ scale: 0.98 }}
                 className="inline-block"
               >
-                <button className="relative bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base md:text-lg lg:text-xl rounded-full px-8 md:px-12 lg:px-14 py-4 md:py-5 lg:py-6 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/35 transition-shadow w-full sm:w-auto overflow-hidden group inline-flex items-center justify-center gap-2">
+                <button
+                  onClick={() => buyNow(VARIANT_KEYS[selectedColor])}
+                  className="relative bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base md:text-lg lg:text-xl rounded-full px-8 md:px-12 lg:px-14 py-4 md:py-5 lg:py-6 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/35 transition-shadow w-full sm:w-auto overflow-hidden group inline-flex items-center justify-center gap-2">
                   <motion.span
                     initial={{ x: '-100%' }}
                     animate={{ x: '200%' }}
